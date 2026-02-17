@@ -2100,6 +2100,7 @@ textarea:focus {
    top: 10px;
    right: 10px;
    z-index: 4;
+   width: 100px;
 }
 
 .services-bg1 {
@@ -3019,8 +3020,10 @@ textarea:focus {
 
 .registration-bank-guarantee__img,
 .plan__img {
-   width: 336px;
-   height: 336px;
+   /*width: 336px;
+   height: 336px;*/
+   width: 100px;
+   height: 100px;
    border-radius: 50%;
    display: flex;
    justify-content: center;
@@ -3325,10 +3328,10 @@ textarea:focus {
    background-color: #5d95ff;
 }
 
-.plan__img {
+/*.plan__img {
    background-image: url('images-1/plan.svg');
    background-size: cover;
-}
+}*/
 
 /* Для мобильных устройств */
 @media (max-width: 820px) {
