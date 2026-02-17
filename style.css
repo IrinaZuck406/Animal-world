@@ -197,7 +197,7 @@ textarea:focus {
 
 .burger__content {
    /*background-color: #fff;*/
-   background-image: url(images-1/burger-bg.jpg);
+   background-image: url(images-1-1/burger-bg.jpg);
    background-position: center bottom;
    background-size: cover;
    width: 90%;
@@ -384,7 +384,7 @@ textarea:focus {
 }
 
 .consultation-modal__content {
-   background-image: url(images/modal-bg.png);
+   background-image: url(images-1/modal-bg.png);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -813,7 +813,7 @@ textarea:focus {
    height: 100vh;
    /* width: 100vw;*/
    position: relative;
-   background: url(images-1/background-header.jpg);
+   background: url(images-1-1/background-header.jpg);
    background-position: center;
    background-size: cover;
    overflow: hidden;
@@ -2466,7 +2466,7 @@ textarea:focus {
 }
 
 .openly__item-quantity::before {
-   content: url("images/openly-text.png");
+   content: url("images-1/openly-text.png");
    position: absolute;
    top: -20px;
    right: -20px;
@@ -3018,7 +3018,7 @@ textarea:focus {
    display: flex;
    justify-content: center;
    align-items: center;
-   /* background-image: url('images/plan.svg');
+   /* background-image: url('images-1/plan.svg');
    background-position: center;
    background-size: cover;*/
    margin-bottom: 20px;
@@ -3319,7 +3319,7 @@ textarea:focus {
 }
 
 .plan__img {
-   background-image: url('images/plan.svg');
+   background-image: url('images-1/plan.svg');
    background-size: cover;
 }
 
@@ -4626,7 +4626,7 @@ select {
 }
 
 .terms-of-redemption__item-img {
-   background-image: url(images/terms-of-redemption.png);
+   background-image: url(images-1/terms-of-redemption.png);
    background-position: center;
    background-size: 100%;
    background-repeat: no-repeat;
@@ -5271,7 +5271,7 @@ select {
 }
 
 .calculation-ransom__item-button3 {
-   background-image: url(images/calculation-ransom-arrow.png);
+   background-image: url(images-1/calculation-ransom-arrow.png);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
