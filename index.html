@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="style.css">
+   <title>Мир животных</title>
+</head>
+
+<body>
+   <!--Всплывающее окно-->
+   <!-- <div class="consultation-modal__overlay">
+      <div class="consultation-modal__content">
+         <img class="consultation-modal__x" src="images/icon-burger.png">
+         <img class="consultation-modal__img" src="images/modal-img.png" alt="Картинка">
+         <h2>Подберем лучшие условия и поможем получить кредит.</h2>
+         <form action="#">
+            <div class="consultation-modal__input-wrapper">
+               <p>Введите имя</p>
+               <input type="text" placeholder="Имя">
+               <p>Введите номер</p>
+               <input type="tel" placeholder="+7 (___)-__-__">
+            </div>
+            <div class="consultation-modal__checkbox-wrapper">
+               <input type="checkbox" name="consultation-checkbox1" id="consultation-checkbox1" checked>
+               <p>Я ознакомлен и согласен с политикой конфеденциальности</p>
+            </div>
+            <div class="consultation-modal__checkbox-wrapper">
+               <input type="checkbox" name="consultation-checkbox2" id="consultation-checkbox1" checked>
+               <p>Я согласен на обработку моих персональных данных</p>
+            </div>
+            <button type="submit">Оставить заявку</button>
+         </form>
+      </div>
+   </div>-->
+   <!-- Всплывающее окно "Хотите больше фактов?" -->
+   <!-- <div class="consultation-modal__overlay" id="subscribeModal">
+      <div class="consultation-modal__content" style="background-image: url(images/modal-bg.jpg); max-width: 600px;">
+         <img class="consultation-modal__x" src="images/icon-burger.png" onclick="closeSubscribeModal()"
+            style="cursor: pointer;">
+
+         <h2 style="font-size: 28px; margin-bottom: 20px;">🐾 Хотите ещё больше интересных фактов?</h2>
+
+         <p style="font-family: 'Gilroy-Light'; margin-bottom: 30px; font-size: 18px;">
+            Подпишитесь на нашу рассылку и получайте свежие статьи, редкие фотографии и новости о животных каждую
+            неделю!
+         </p>
+
+         <form action="#"
+            onsubmit="event.preventDefault(); alert('Спасибо за подписку! Мы отправили письмо на вашу почту.'); closeSubscribeModal();">
+            <div class="consultation-modal__input-wrapper">
+               <p>Ваше имя</p>
+               <input type="text" placeholder="Имя" required>
+
+               <p>Ваш email</p>
+               <input type="email" placeholder="example@mail.ru" required>
+            </div>
+
+            <div class="consultation-modal__checkbox-wrapper">
+               <input type="checkbox" name="modal-checkbox" id="modal-checkbox" checked required>
+               <p>Я согласен получать письма и принимаю политику конфиденциальности</p>
+            </div>
+
+            <button type="submit" style="width: 100%;">Подписаться на факты</button>
+         </form>
+
+         <img src="images/animal-icon.png" class="consultation-modal__img"
+            style="position: absolute; bottom: 20px; right: 20px; width: 100px; opacity: 0.3;">
+      </div>
+   </div>-->
+
+   <!-- Кнопка для вызова окна (можно добавить в угол страницы) -->
+   <!-- <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+      <button onclick="openSubscribeModal()"
+         style="background-color: #229ED9; color: white; border: none; border-radius: 50px; padding: 15px 25px; font-family: 'Gilroy-ExtraBold'; font-size: 16px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+         📧 Подписаться
+      </button>
+   </div>
+
+   <script>
+      function openSubscribeModal() {
+         document.getElementById('subscribeModal').classList.add('active');
+         document.body.classList.add('_lock');
+      }
+
+      function closeSubscribeModal() {
+         document.getElementById('subscribeModal').classList.remove('active');
+         document.body.classList.remove('_lock');
+      }
+
+      // Закрытие по клику вне окна
+      document.getElementById('subscribeModal').addEventListener('click', function (e) {
+         if (e.target === this) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Закрытие по Escape
+      document.addEventListener('keydown', function (e) {
+         if (e.key === 'Escape' && document.getElementById('subscribeModal').classList.contains('active')) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Автоматическое появление через 30 секунд (можно убрать если не нужно)
+      setTimeout(function () {
+         // Показываем не чаще раза в день (используем localStorage)
+         if (!localStorage.getItem('modalShown')) {
+            openSubscribeModal();
+            localStorage.setItem('modalShown', 'true');
+         }
+      }, 30000);
+   </script>-->
+   <!-- Всплывающее окно "Хотите больше фактов?" -->
+   <div class="consultation-modal__overlay" id="subscribeModal">
+      <div class="consultation-modal__content" style="background-image: url(images/modal-bg.jpg); max-width: 600px;">
+         <img class="consultation-modal__x" src="images/icon-burger.png" onclick="closeSubscribeModal()"
+            style="cursor: pointer;">
+
+         <h2 style="font-size: 28px; margin-bottom: 20px;">🐾 Хотите ещё больше интересных фактов?</h2>
+
+         <p style="font-family: 'Gilroy-Light'; margin-bottom: 30px; font-size: 18px;">
+            Подпишитесь на нашу рассылку и получайте свежие статьи, редкие фотографии и новости о животных каждую
+            неделю!
+         </p>
+
+         <!-- Убираем required и добавляем свою проверку -->
+         <form action="#" onsubmit="return validateSubscribeForm(this);">
+            <div class="consultation-modal__input-wrapper">
+               <p>Ваше имя</p>
+               <input type="text" id="modal-name" placeholder="Имя">
+
+               <p>Ваш email</p>
+               <input type="email" id="modal-email" placeholder="example@mail.ru">
+            </div>
+
+            <div class="consultation-modal__checkbox-wrapper">
+               <input type="checkbox" name="modal-checkbox" id="modal-checkbox" checked>
+               <p>Я согласен получать письма и принимаю политику конфиденциальности</p>
+            </div>
+
+            <button type="submit" style="width: 100%;">Подписаться на факты</button>
+         </form>
+
+         <!-- Контейнер для своих сообщений об ошибках -->
+         <div id="modal-error-message"
+            style="color: #ff3333; font-family: 'Gilroy-Light'; font-size: 14px; margin-top: 10px; text-align: center; min-height: 20px;">
+         </div>
+
+         <img src="images/animal-icon.png" class="consultation-modal__img"
+            style="position: absolute; bottom: 20px; right: 20px; width: 100px; opacity: 0.3;">
+      </div>
+   </div>
+
+   <!-- Кнопка для вызова окна (можно добавить в угол страницы) -->
+   <!-- <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+      <button onclick="openSubscribeModal()"
+         style="background-color: #229ED9; color: white; border: none; border-radius: 50px; padding: 15px 25px; font-family: 'Gilroy-ExtraBold'; font-size: 16px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+         📧 Подписаться
+      </button>
+   </div>-->
+
+   <!--  <script>
+      function openSubscribeModal() {
+         document.getElementById('subscribeModal').classList.add('active');
+         document.body.classList.add('_lock');
+         // Очищаем сообщение об ошибке при открытии
+         document.getElementById('modal-error-message').innerHTML = '';
+      }
+
+      function closeSubscribeModal() {
+         document.getElementById('subscribeModal').classList.remove('active');
+         document.body.classList.remove('_lock');
+         // Очищаем поля и сообщение при закрытии
+         document.getElementById('modal-name').value = '';
+         document.getElementById('modal-email').value = '';
+         document.getElementById('modal-checkbox').checked = true;
+         document.getElementById('modal-error-message').innerHTML = '';
+      }
+
+      // Функция валидации
+      function validateSubscribeForm(form) {
+         const name = document.getElementById('modal-name').value.trim();
+         const email = document.getElementById('modal-email').value.trim();
+         const checkbox = document.getElementById('modal-checkbox').checked;
+         const errorMessage = document.getElementById('modal-error-message');
+
+         // Проверяем имя
+         if (name === '') {
+            errorMessage.innerHTML = 'Пожалуйста, введите ваше имя';
+            document.getElementById('modal-name').style.border = '2px solid #ff3333';
+            return false;
+         } else {
+            document.getElementById('modal-name').style.border = '';
+         }
+
+         // Проверяем email
+         if (email === '') {
+            errorMessage.innerHTML = 'Пожалуйста, введите ваш email';
+            document.getElementById('modal-email').style.border = '2px solid #ff3333';
+            return false;
+         } else if (!isValidEmail(email)) {
+            errorMessage.innerHTML = 'Пожалуйста, введите корректный email (пример: name@mail.ru)';
+            document.getElementById('modal-email').style.border = '2px solid #ff3333';
+            return false;
+         } else {
+            document.getElementById('modal-email').style.border = '';
+         }
+
+         // Проверяем согласие
+         if (!checkbox) {
+            errorMessage.innerHTML = 'Пожалуйста, отметьте согласие на получение писем';
+            return false;
+         }
+
+         // Если всё ок
+         errorMessage.style.color = '#00aa00';
+         errorMessage.innerHTML = 'Спасибо! Подписка оформлена ✅';
+
+         // Закрываем окно через 1 секунду
+         setTimeout(function () {
+            closeSubscribeModal();
+            // Дополнительное уведомление (можно убрать)
+            alert('Спасибо за подписку! Мы отправили письмо на вашу почту.');
+         }, 1000);
+
+         return false; // Отменяем отправку формы
+      }
+
+      // Проверка email
+      function isValidEmail(email) {
+         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         return re.test(email);
+      }
+
+      // Закрытие по клику вне окна
+      document.getElementById('subscribeModal').addEventListener('click', function (e) {
+         if (e.target === this) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Закрытие по Escape
+      document.addEventListener('keydown', function (e) {
+         if (e.key === 'Escape' && document.getElementById('subscribeModal').classList.contains('active')) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Автоматическое появление через 30 секунд (можно убрать если не нужно)
+      setTimeout(function () {
+         // Показываем не чаще раза в день (используем localStorage)
+         if (!localStorage.getItem('modalShown')) {
+            openSubscribeModal();
+            localStorage.setItem('modalShown', 'true');
+         }
+      }, 30000);
+   </script>-->
+   <script>
+      function openSubscribeModal() {
+         document.getElementById('subscribeModal').classList.add('active');
+         document.body.classList.add('_lock');
+         clearModalErrors();
+      }
+
+      function closeSubscribeModal() {
+         document.getElementById('subscribeModal').classList.remove('active');
+         document.body.classList.remove('_lock');
+         clearModalErrors();
+      }
+
+      function clearModalErrors() {
+         // Очищаем сообщения об ошибках
+         const errorDiv = document.getElementById('modal-error-message');
+         if (errorDiv) errorDiv.innerHTML = '';
+
+         // Убираем красные рамки
+         document.getElementById('modal-name').style.border = '';
+         document.getElementById('modal-email').style.border = '';
+      }
+
+      // Функция валидации
+      function validateSubscribeForm(form) {
+         const name = document.getElementById('modal-name').value.trim();
+         const email = document.getElementById('modal-email').value.trim();
+         const checkbox = document.getElementById('modal-checkbox').checked;
+         const errorMessage = document.getElementById('modal-error-message');
+
+         // Очищаем предыдущие ошибки
+         errorMessage.innerHTML = '';
+         document.getElementById('modal-name').style.border = '';
+         document.getElementById('modal-email').style.border = '';
+         errorMessage.style.color = '#ff3333';
+
+         // Проверяем имя
+         if (name === '') {
+            errorMessage.innerHTML = '❌ Пожалуйста, введите ваше имя';
+            document.getElementById('modal-name').style.border = '2px solid #ff3333';
+            return false;
+         }
+
+         // Проверяем email
+         if (email === '') {
+            errorMessage.innerHTML = '❌ Пожалуйста, введите ваш email';
+            document.getElementById('modal-email').style.border = '2px solid #ff3333';
+            return false;
+         } else if (!isValidEmail(email)) {
+            errorMessage.innerHTML = '❌ Неправильный формат email. Должен содержать @ (пример: name@mail.ru)';
+            document.getElementById('modal-email').style.border = '2px solid #ff3333';
+            return false;
+         }
+
+         // Проверяем согласие
+         if (!checkbox) {
+            errorMessage.innerHTML = '❌ Пожалуйста, отметьте согласие на получение писем';
+            return false;
+         }
+
+         // Если всё ок
+         errorMessage.style.color = '#00aa00';
+         errorMessage.innerHTML = '✅ Спасибо! Подписка оформлена. Письмо отправлено на ваш email.';
+
+         // Очищаем поля
+         document.getElementById('modal-name').value = '';
+         document.getElementById('modal-email').value = '';
+         document.getElementById('modal-checkbox').checked = true;
+
+         // Закрываем окно через 2 секунды (чтобы пользователь успел увидеть успех)
+         setTimeout(function () {
+            closeSubscribeModal();
+         }, 2000);
+
+         return false; // Отменяем отправку формы
+      }
+
+      // Проверка email
+      function isValidEmail(email) {
+         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         return re.test(email);
+      }
+
+      // Закрытие по клику вне окна
+      document.getElementById('subscribeModal').addEventListener('click', function (e) {
+         if (e.target === this) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Закрытие по Escape
+      document.addEventListener('keydown', function (e) {
+         if (e.key === 'Escape' && document.getElementById('subscribeModal').classList.contains('active')) {
+            closeSubscribeModal();
+         }
+      });
+
+      // Автоматическое появление через 30 секунд (можно убрать если не нужно)
+      setTimeout(function () {
+         if (!localStorage.getItem('modalShown')) {
+            openSubscribeModal();
+            localStorage.setItem('modalShown', 'true');
+         }
+      }, 30000);
+   </script>
+   <!--Всплывающее окно "Бургер"-->
+   <div class="burger__overlay">
+      <div class="burger__content">
+         <img src="images/icon-burger.png" class="burger__x">
+         <div class="header__burger-nav"></div>
+
+      </div>
+   </div>
+
+
+
+   <section class="first-screen">
+      <!-- Фоновые изображения (можно заменить на фото животных) -->
+      <img src="images-1/lion-pride-dry-forest.jpg" class="first-screen__img-1" style="opacity: 1;"
+         alt="Силуэт животного">
+      <img src="images-1/header-img2.jpg" class="first-screen__img-2" style="opacity: 0.9;" alt="Силуэт животного">
+      <img src="images-1/header-img3.jpg" class="first-screen__img-3" style="opacity: 0.9;" alt="Силуэт животного">
+      <img src="images-1/header-img4.jpg" class="first-screen__img-4" style="opacity: 0.9;" alt="Силуэт животного">
+
+      <div class="first-screen__container container">
+         <!-- <img src="images-1/lion-pride-dry-forest.jpg" class="first-screen__img-1" style="opacity: 1;"
+            alt="Силуэт животного">-->
+         <img src="images-1/header-img5.jpg" class="first-screen__img-5" style="opacity: 0.9;" alt="Силуэт животного">
+
+         <!-- Шапка -->
+         <div class="header">
+            <div class="header__top">
+               <a href="index.html" class="header__logo">
+                  <!-- <img src="images/header-logo.png" alt="Мир животных">-->
+                  Зоогид
+               </a>
+               <div class="header__buttons">
+                  <a href="#" data-goto=".services">Каталог животных<img src="images-1/header-calc.svg"></a>
+                  <!-- <a class="btn-trigger" href="#">Найти животное</a>-->
+               </div>
+
+               <div class="header__menu-icon burger-btn-trigger"><img src="images/icon-burger1.png"></div>
+            </div>
+
+            <!-- Меню в шапке -->
+            <div class="header__bottom">
+               <div class="header__bottom-menu">
+                  <ul class="menu">
+                     <li>
+                        Категории <img src="images/menu.png">
+                        <ul class="sub-menu">
+                           <li><a href="#" data-goto=".services" data-tab="tab-1">Млекопитающие</a></li>
+                           <li><a href="#" data-goto=".services" data-tab="tab-2">Птицы</a></li>
+                           <li><a href="#" data-goto=".services" data-tab="tab-3">Рептилии</a></li>
+                           <li><a href="#" data-goto=".services" data-tab="tab-4">Морские обитатели</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        О проекте <img src="images/menu.png">
+                        <ul class="sub-menu">
+                           <li><a href="#" data-goto=".no-bounce">О нас</a></li>
+                           <li><a href="#" data-goto=".reviews">Отзывы</a></li>
+                           <li><a href="#" data-goto=".blog">Статьи</a></li>
+                           <li><a href="#" data-goto=".answers">FAQ</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        Ещё <img src="images/menu.png">
+                        <ul class="sub-menu">
+                           <li><a href="#" data-goto=".plan">Как это работает</a></li>
+                           <li><a href="#" data-goto=".certificates">Галерея</a></li>
+                           <li><a href="cooperation.html">Сотрудничество</a></li>
+                           <li><a href="contact.html">Контакты</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </div>
+               <nav class="header__bottom-nav">
+                  <ul>
+                     <li data-goto=".no-bounce">О нас</li>
+                     <li><a href="#" data-goto=".services">Каталог</a></li>
+                     <li><a href="#" data-goto=".plan">Как это работает</a></li>
+                     <li><a href="#" data-goto=".reviews">Отзывы</a></li>
+                     <li><a href="#" data-goto=".bank-guarantees-accordion">FAQ</a></li>
+                     <li><a href="#" data-goto=".blog">Статьи</a></li>
+                     <!--  <li><a href="cooperation.html">Сотрудничество</a></li>
+                     <li><a href="contact.html">Контакты</a></li>-->
+                  </ul>
+               </nav>
+            </div>
+         </div>
+
+         <!-- Контент первого экрана -->
+         <div class="first-screen__content">
+            <h1 class="first-screen__title title-bold">
+               Удивительный мир животных
+               <div>
+                  <span class="first-screen__title-span title-in-background">100+ видов</span>&nbsp;
+                  <span class="first-screen__title-span1">с фотографиями и интересными фактами</span>
+               </div>
+            </h1>
+
+            <ul class="first-screen__list">
+               <li>
+                  <div class="first-screen__item-img">
+                     <img src="images-1/icon-mammal.svg" alt="Млекопитающие">
+                  </div>
+                  <div class="first-screen__item-text">Млекопитающие, птицы, рептилии и рыбы</div>
+               </li>
+               <li>
+                  <div class="first-screen__item-img">
+                     <img src="images-1/icon-fact.svg" alt="Интересные факты">
+                  </div>
+                  <div class="first-screen__item-text">Удивительные факты о каждом виде</div>
+               </li>
+               <li>
+                  <div class="first-screen__item-img">
+                     <img src="images-1/icon-habitat.svg" alt="Среда обитания">
+                  </div>
+                  <div class="first-screen__item-text">Поиск по среде обитания и континентам</div>
+               </li>
+               <li>
+                  <div class="first-screen__item-img">
+                     <img src="images-1/icon-photo.svg" alt="Фотографии">
+                  </div>
+                  <div class="first-screen__item-text">Красочные фотографии высокого качества</div>
+               </li>
+            </ul>
+
+            <div class="first-screen__proposal">
+               <button class="first-screen__button-2"
+                  onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'})">
+                  Перейти к каталогу <img src="images-1/first-screen-button2.svg">
+               </button>
+               <p>более 100 видов животных</p>
+            </div>
+         </div>
+
+
+      </div>
+   </section>
+   <section class="no-bounce">
+      <div class="no-bounce__container container">
+         <h2 class="no-bounce__title title-light title-light"><span class="title-in-background">Почему
+               мы?</span><br>Преимущества сайта</h2>
+
+         <ul class="no-bounce__wrapper">
+            <li>
+               <img src="images-1/icon-search.svg" alt="Поиск">
+               <div>
+                  <h3>Удобный поиск по видам</h3>
+                  <p>Находите животных по среде обитания, размеру, континенту</p>
+               </div>
+            </li>
+            <li>
+               <img src="images-1/icon-free.svg" alt="Бесплатно">
+               <div>
+                  <h3>Полностью бесплатно</h3>
+                  <p>Вся информация доступна без регистрации и оплаты</p>
+               </div>
+            </li>
+            <li>
+               <img src="images-1/icon-detail.svg" alt="Подробно">
+               <div>
+                  <h3>Подробные описания</h3>
+                  <p>Интересные факты, питание, среда обитания, особенности поведения</p>
+               </div>
+            </li>
+            <li>
+               <img src="images-1/icon-update.svg" alt="Обновления">
+               <div>
+                  <h3>Более 100 видов</h3>
+                  <p>Коллекция постоянно пополняется новыми животными</p>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </section>
+
+   <section class="loan-calculator">
+      <div class="loan-calculator__container container">
+         <h2 class="title-bold">Узнай своё тотемное животное <span class="title-in-background">за 1 минуту</span>
+         </h2>
+
+         <div class="loan-calculator__wrapper">
+            <form id="totemTest" onsubmit="event.preventDefault(); showTotemResult();">
+               <div class="loan-calculator__wrapper"
+                  style="padding: 30px; flex-direction: column; align-items: stretch;">
+
+                  <!-- Вопрос 1 -->
+                  <div class="loan-calculator__data-entry" style="width: 100%; padding-top: 0;">
+                     <label>1. Где ты любишь отдыхать?</label>
+                     <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; margin-bottom: 30px;">
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q1" value="forest" checked> 🌲 В лесу
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q1" value="mountain"> ⛰️ В горах
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q1" value="sea"> 🌊 У моря
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q1" value="savanna"> 🦁 В саванне
+                        </label>
+                     </div>
+
+                     <!-- Вопрос 2 -->
+                     <label>2. Какое время суток тебе нравится больше?</label>
+                     <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; margin-bottom: 30px;">
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q2" value="morning" checked> 🌅 Утро
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q2" value="day"> ☀️ День
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q2" value="evening"> 🌆 Вечер
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q2" value="night"> 🌙 Ночь
+                        </label>
+                     </div>
+
+                     <!-- Вопрос 3 -->
+                     <label>3. Какое качество в тебе самое сильное?</label>
+                     <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; margin-bottom: 30px;">
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q3" value="strength" checked> 💪 Сила
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q3" value="wisdom"> 🦉 Мудрость
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q3" value="cunning"> 🦊 Хитрость
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q3" value="kindness"> 🐶 Доброта
+                        </label>
+                     </div>
+
+                     <!-- Вопрос 4 -->
+                     <label>4. Что ты любишь делать в свободное время?</label>
+                     <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; margin-bottom: 30px;">
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q4" value="walk" checked> 🚶 Гулять на природе
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q4" value="read"> 📚 Читать книги
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q4" value="friends"> 👨‍👩‍👧‍👦 Общаться с друзьями
+                        </label>
+                        <label
+                           style="display: flex; align-items: center; gap: 8px; background: #f0f4fa; padding: 10px 20px; border-radius: 30px; cursor: pointer;">
+                           <input type="radio" name="q4" value="learn"> 🔍 Узнавать новое
+                        </label>
+                     </div>
+                  </div>
+
+                  <!-- Кнопка и результат -->
+                  <div class="loan-calculator__result"
+                     style="width: 100%; height: auto; background: #002976; border-radius: 20px; padding: 30px; margin-top: 20px;">
+                     <div style="text-align: center; margin-bottom: 20px;">
+                        <p class="loan-calculator__result-text" style="font-size: 24px;">Твой тотем:</p>
+                        <div id="totemResult"
+                           style="font-family: 'Gilroy-ExtraBold'; font-size: 48px; color: #fff; margin: 20px 0;">🐾
+                        </div>
+                        <div id="totemDescription"
+                           style="font-family: 'Gilroy-Light'; font-size: 18px; color: #fff; margin-bottom: 30px;">
+                           Ответь на вопросы и узнай своё животное</div>
+                     </div>
+
+                     <button type="button" onclick="calculateTotem()"
+                        style="width: 100%; border-radius: 10px; height: 59px; background-color: #2aabee; font-family: 'Gilroy-ExtraBold'; font-size: 24px; color: #fff; cursor: pointer; border: none;">Узнать
+                        результат</button>
+
+                     <div class="confidentiality__checkbox-wrapper" style="margin-top: 20px; justify-content: center;">
+                        <input type="checkbox" name="confidentiality-checkbox1" checked id="totem-checkbox">
+                        <p style="color: #fff; font-family: 'Gilroy-Light';">Я согласен поделиться результатом с
+                           друзьями 😊</p>
+                     </div>
+
+                     <img src="images/loan-calculator.png" class="loan-calculator__result-img2" style="display: none;">
+                  </div>
+               </div>
+            </form>
+         </div>
+
+         <!-- Дисклеймер (можно убрать или оставить забавный факт) -->
+         <div class="loan-calculator__text" style="margin-top: 30px;">
+            <p style="font-size: 14px; color: #666;">🐘 Знаешь ли ты, что слоны — единственные млекопитающие, которые не
+               умеют прыгать? А твоё тотемное животное расскажет о тебе много интересного!</p>
+         </div>
+      </div>
+   </section>
+
+   <section class="services">
+      <div class="services__container container">
+         <h2 class="services__title title-bold">Исследуй мир животных по категориям
+         </h2>
+
+         <div class="services__tabs">
+            <div class="services__tabs-header">
+               <p>Выбери категорию:</p>
+               <ul class="services__tabs-container">
+                  <li data-tab="tab-1" class="services__tabs-title active-tab">Млекопитающие</li>
+                  <li data-tab="tab-2" class="services__tabs-title">Птицы</li>
+                  <li data-tab="tab-3" class="services__tabs-title">Рептилии</li>
+                  <li data-tab="tab-4" class="services__tabs-title">Морские обитатели</li>
+               </ul>
+            </div>
+
+            <div class="services__tabs-wrapper">
+               <!-- <img class="services-bg1" src="images/services-tabs-bg1.png" style="opacity: 0.3;">
+               <img class="services-bg2" src="images/header-img1.png" style="opacity: 0.2;">
+               <img class="services-bg5" src="images/services-tabs-bg5.png" style="opacity: 0.3;">-->
+
+               <!-- Таб 1: Млекопитающие -->
+               <div id="tab-1" class="services__tabs-content">
+                  <!-- Карточка 1: Лев -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Лев — царь зверей</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Саванны Африки</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 250 кг</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">10-14 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Прайд</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Грива</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 2: Слон -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Слон — великан саванны</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тропические леса, саванны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 6 тонн</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">60-70 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Травоядный</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Хобот</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Бивни</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 3: Медведь -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Бурый медведь — хозяин леса</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Леса Евразии, Северной Америки</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 600 кг</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">20-30 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Всеядный</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Спячка</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Ловит рыбу</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 4: Волк -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Волк — санитар леса</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Леса, степи, тундра</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 80 кг</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">8-12 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Стая</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Вой</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 5: Дельфин -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Дельфин — друг человека</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Моря и океаны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 300 кг</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">20-30 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Стая</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Эхолокация</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 6: Жираф -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Жираф — самый высокий</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Саванны Африки</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Рост</p>
+                           <p class="services__tabs-card-info1">до 5.5 м</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">20-25 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Травоядный</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Длинная шея</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Пятна</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Таб 2: Птицы -->
+               <div id="tab-2" class="services__tabs-content hidden-tab-content">
+                  <!-- Карточка 1: Орёл -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Орёл — властелин небес</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Горы, степи, леса</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Размах крыльев</p>
+                           <p class="services__tabs-card-info1">до 2.5 м</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">до 30 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Острое зрение</span>
+                        </div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Парит</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 2: Сова -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Сова — мудрая птица</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Леса по всему миру</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Размер</p>
+                           <p class="services__tabs-card-info1">до 70 см</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">до 25 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Ночная</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Поворот головы</span>
+                        </div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 3: Фламинго -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Фламинго — розовое чудо</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Озёра, лагуны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Рост</p>
+                           <p class="services__tabs-card-info1">до 1.5 м</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">20-30 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Рачки</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Розовый цвет</span>
+                        </div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Длинные ноги</span>
+                        </div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 4: Пингвин -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.5;">
+                     <h3>Пингвин — нелетающий путешественник</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Антарктида, южное полушарие</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Рост</p>
+                           <p class="services__tabs-card-info1">до 1.2 м</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Продолжительность жизни</p>
+                           <p class="services__tabs-card-info1">15-20 лет</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 30px;"><span>Рыба</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 30px;"><span>Не летает</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 30px;"><span>Плавает</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Таб 3: Рептилии (кратко, аналогично) -->
+               <!-- Таб 3: Рептилии -->
+               <div id="tab-3" class="services__tabs-content hidden-tab-content">
+                  <!-- Карточка 1: Крокодил -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Крокодил — древний хищник</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тропические реки, озёра</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 6 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 1000 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Чешуя</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>В воде</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 2: Змея -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Змея — гибкая и загадочная</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Леса, пустыни, тропики</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 7 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 50 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Яд</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Линька</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 3: Черепаха -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Черепаха — долгожительница</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Океаны, суша, пресные воды</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 1.5 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 300 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Травоядная</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Панцирь</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>100+ лет</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 4: Хамелеон -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Хамелеон — мастер маскировки</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тропические леса Африки</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 50 см</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 150 г</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Насекомые</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Меняет цвет</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Глаза</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 5: Ящерица -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Ящерица — шустрая бегунья</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">По всему миру, кроме Антарктиды</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 3 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 50 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Насекомые</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Хвост</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Быстрая</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 6: Варан -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Комодский варан — дракон наших дней</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Острова Индонезии</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 3 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 70 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Яд</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Редкий</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Таб 4: Морские обитатели -->
+               <!-- Таб 4: Морские обитатели -->
+               <div id="tab-4" class="services__tabs-content hidden-tab-content">
+                  <!-- Карточка 1: Акула -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Акула — королева морей</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Океаны по всему миру</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 6 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 1200 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Зубы</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Плавник</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 2: Кит -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Синий кит — великан океана</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Все океаны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 30 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 150 тонн</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Планктон</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Фонтан</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Песни</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 3: Осьминог -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Осьминог — умный головоногий</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тёплые моря и океаны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 3 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 15 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Хищник</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>8 щупалец</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Чернила</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 4: Морской конёк -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Морской конёк — нежный и изящный</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тёплые мелководья</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 15 см</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 10 г</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Планктон</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Самец рожает</span>
+                        </div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Цепляется</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 5: Дельфин -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Дельфин — друг человека</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Моря и океаны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Длина</p>
+                           <p class="services__tabs-card-info1">до 4 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 300 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Рыба</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Умный</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Стая</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+
+                  <!-- Карточка 6: Скат -->
+                  <div class="services__tabs-card">
+                     <img class="services__tabs-card-bg" src="images/services__tabs4.png" style="opacity: 0.3;">
+                     <h3>Скат — парящий в воде</h3>
+                     <p class="services__tabs-card-text">Среда обитания</p>
+                     <p class="services__tabs-card-info">Тёплые моря и океаны</p>
+                     <div class="services__tabs-card-content1">
+                        <div>
+                           <p class="services__tabs-card-text">Размах</p>
+                           <p class="services__tabs-card-info1">до 2 метров</p>
+                        </div>
+                        <div>
+                           <p class="services__tabs-card-text">Вес</p>
+                           <p class="services__tabs-card-info1">до 30 кг</p>
+                        </div>
+                     </div>
+                     <div class="services__tabs-card-content2">
+                        <div><img src="images-1/services__tabs1.svg" style="width: 25px;"><span>Моллюски</span></div>
+                        <div><img src="images-1/services__tabs2.svg" style="width: 25px;"><span>Плоский</span></div>
+                        <div><img src="images-1/services__tabs3.svg" style="width: 25px;"><span>Хвост</span></div>
+                     </div>
+                     <a href="#">Подробнее<img src="images/services-link1.png"></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="principle">
+      <div class="principle__container container">
+         <h2 class="principle__title title-light">Что вы найдёте <span class="title-bold">на нашем сайте</span></h2>
+
+         <ul class="principle__wrapper">
+            <!-- Пункт 1: Интересные факты -->
+            <li class="principle__item">
+               <h3>Удивительные факты</h3>
+               <p>Знаете ли вы, что сердце синего кита весит как автомобиль? Мы собрали самые интересные факты о каждом
+                  животном.</p>
+               <img class="principle__img" src="images-1/principle1.png" alt="Факты" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 2: Красочные фото -->
+            <li class="principle__item">
+               <h3>Красочные фотографии</h3>
+               <p>Более 500 качественных снимков животных в дикой природе. Рассматривайте детали и наслаждайтесь
+                  красотой.</p>
+               <img class="principle__img" src="images-1/principle2.svg" alt="Фото" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 3: Среда обитания -->
+            <li class="principle__item">
+               <h3>Где живут животные</h3>
+               <p>Подробное описание среды обитания: леса, горы, пустыни, океаны. Узнайте, кто где живёт и почему.</p>
+               <img class="principle__img" src="images-1/principle3.svg" alt="Среда обитания" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 4: Питание и образ жизни -->
+            <li class="principle__item">
+               <h3>Питание и поведение</h3>
+               <p>Хищник или травоядное? Охотится в одиночку или живёт стаей? Мы расскажем об образе жизни каждого вида.
+               </p>
+               <img class="principle__img" src="images-1/principle4.svg" alt="Питание" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 5: Для детей и школьников -->
+            <li class="principle__item">
+               <h3>Помощь в учёбе</h3>
+               <p>Идеально для подготовки докладов и презентаций. Вся информация структурирована и понятна детям.</p>
+               <img class="principle__img" src="images-1/principle5.png" alt="Для детей" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 6: Редкие виды -->
+            <li class="principle__item">
+               <h3>Редкие и исчезающие виды</h3>
+               <p>Узнайте о животных, которые нуждаются в защите. Красная книга, заповедники и программы сохранения.</p>
+               <img class="principle__img" src="images-1/principle6.svg" alt="Редкие виды" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 7: Видео и документалистика -->
+            <li class="principle__item">
+               <h3>Видеоматериалы</h3>
+               <p>Ссылки на лучшие документальные фильмы и видео о животных. Смотрите и узнавайте больше.</p>
+               <img class="principle__img" src="images-1/principle7.png" alt="Видео" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.1;">
+            </li>
+
+            <!-- Пункт 8: Карта ареалов -->
+            <li class="principle__item">
+               <h3>Где встретить в природе</h3>
+               <p>Интерактивная карта с местами обитания. Планируйте путешествия, чтобы увидеть животных вживую.</p>
+               <img class="principle__img" src="images-1/principle4.png" alt="Карта" style="opacity: 0.9;">
+               <img class="principle__bg" src="images-1/principle.svg" alt="Фон" style="opacity: 0.5;">
+            </li>
+         </ul>
+      </div>
+   </section>
+   <section class="openly">
+      <div class="openly__container container">
+         <h2 class="openly__title title-bold">Наша коллекция в цифрах</h2>
+         <p class="openly__subtitle">Мы постоянно пополняем базу знаний о животных</p>
+
+         <div class="openly__wrapper">
+            <div class="openly__picture"
+               style="background-image: url('images-1/animal-collage.jpg'); background-size: contain; background-position: center; background-color: #0d470d;">
+               <!-- Здесь будет коллаж из животных - можно добавить позже -->
+            </div>
+
+            <ul class="openly__content">
+               <li class="openly__item">
+                  <p class="openly__item-quantity">100+</p>
+                  <p class="openly__item-text">видов животных в каталоге</p>
+               </li>
+               <li class="openly__item">
+                  <p class="openly__item-quantity">500+</p>
+                  <p class="openly__item-text">фотографий высокого качества</p>
+               </li>
+               <li class="openly__item">
+                  <p class="openly__item-quantity">50+</p>
+                  <p class="openly__item-text">стран и континентов</p>
+               </li>
+               <li class="openly__item">
+                  <p class="openly__item-quantity">15 000+</p>
+                  <p class="openly__item-text">посетителей ежемесячно</p>
+               </li>
+               <li class="openly__item">
+                  <p class="openly__item-quantity">3 года</p>
+                  <p class="openly__item-text">собираем и обновляем информацию</p>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </section>
+
+   <section class="partners">
+      <h2 class="partners__title">Наши друзья и партнёры</h2>
+
+      <div class="partners__wrapper">
+         <ul class="partners__track">
+            <!-- Первый блок логотипов (будет повторяться для бесконечной ленты) -->
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               WWF</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               National Geographic</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Московский зоопарк</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Discovery</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Greenpeace</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Союз охраны птиц</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Зоологический музей</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Заповедники России</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Animal Planet</li>
+
+            <!-- Второй блок (копия для бесконечной ленты) -->
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               WWF</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               National Geographic</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Московский зоопарк</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Discovery</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Greenpeace</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Союз охраны птиц</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Зоологический музей</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #e6f0fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #229ED9;">
+               Заповедники России</li>
+            <li class="partners__item"
+               style="background-image: none; background-color: #f0f4fa; display: flex; align-items: center; justify-content: center; font-family: 'Gilroy-ExtraBold'; font-size: 20px; color: #0051FF;">
+               Animal Planet</li>
+         </ul>
+      </div>
+   </section>
+
+   <section class="certificates">
+      <div class="certificates__container container">
+         <div class="certificates__title">Красота дикой природы</div>
+
+         <div class="certificates-slider swiper">
+            <div class="certificates-slider__wrapper swiper-wrapper">
+
+               <!-- Слайд 1: Лев -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/lion.jpg" alt="Лев"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Лев</p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Panthera leo</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 2: Слон -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/elephant.jpg" alt="Слон"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Слон</p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Loxodonta africana</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 3: Полярный медведь -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/polar-bear.jpg" alt="Белый медведь"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Белый
+                           медведь</p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Ursus maritimus</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 4: Фламинго -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/flamingo.jpg" alt="Фламинго"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Фламинго
+                        </p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Phoenicopterus</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 5: Волк -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/wolf.jpg" alt="Волк"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Волк</p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Canis lupus</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 6: Дельфин -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/dolphin.jpg" alt="Дельфин"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Дельфин
+                        </p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Delphinus delphis</p>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Слайд 7: Орёл -->
+               <div class="certificates-slider__slide swiper-slide">
+                  <div
+                     style="position: relative; width: 100%; height: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                     <img src="images-1/eagle.jpg" alt="Орёл"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                     <div
+                        style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px 15px 15px;">
+                        <p style="font-family: 'Gilroy-ExtraBold'; color: white; font-size: 24px; margin: 0;">Орёл</p>
+                        <p
+                           style="font-family: 'Gilroy-Light'; color: rgba(255,255,255,0.9); font-size: 16px; margin: 5px 0 0;">
+                           Aquila chrysaetos</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="certificates-slider__buttons">
+            <div id="certificatesPrev" class="certificates-button-prev"><img src="images/arrow1.png"></div>
+            <div id="certificatesNext" class="certificates-button-next"><img src="images/arrow2.png"></div>
+         </div>
+      </div>
+   </section>
+
+   <section class="plan">
+      <div class="plan__container container">
+         <div class="plan__header">
+            <h2 class="plan__title title-light">Всего <span class="title-bold">несколько шагов</span> и вы узнаете всё о
+               любимых животных
+            </h2>
+            <div class="plan__info">
+               <img src="images-1/plan-info.svg" alt="Совёнок">
+               <p>Сайт создан <br>для детей и взрослых <br><span>просто и понятно</span></p>
+            </div>
+         </div>
+
+         <div class="plan__wrapper">
+            <!-- Шаг 1 -->
+            <div class="plan__item">
+               <div class="plan__number"><img class="p1" src="images/line1.png">01</div>
+               <div class="plan__img"><img src="images-1/plan1.svg" alt="Выбор"></div>
+               <p class="plan__text">Выбираете животное <br><span>из каталога</span></p>
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="plan__item">
+               <div class="plan__number"><img class="p2" src="images/line2.png">02</div>
+               <div class="plan__img"><img src="images-1/plan2.svg" alt="Чтение"></div>
+               <p class="plan__text">Читаете <br><span>интересные факты</span></p>
+            </div>
+
+            <!-- Шаг 3 -->
+            <div class="plan__item">
+               <div class="plan__number"><img class="p3" src="images/line3.png">03</div>
+               <div class="plan__img"><img src="images-1/plan3.svg" alt="Фото"></div>
+               <p class="plan__text">Рассматриваете <br><span>красивые фото</span></p>
+            </div>
+
+            <!-- Шаг 4 -->
+            <div class="plan__item">
+               <div class="plan__number">04</div>
+               <div class="plan__img"><img src="images-1/plan4.svg" alt="Среда обитания"></div>
+               <p class="plan__text">Узнаёте <br><span>где живёт</span></p>
+            </div>
+
+            <!-- Шаг 5 -->
+            <div class="plan__item">
+               <div class="plan__number"><img class="p4" src="images/line4.png">05</div>
+               <div class="plan__img"><img src="images-1/plan5.svg" alt="Питание"></div>
+               <p class="plan__text">Чем питается <br><span>и какой образ жизни</span></p>
+            </div>
+
+            <!-- Шаг 6 -->
+            <div class="plan__item">
+               <div class="plan__number"><img class="p5" src="images/line5.png">06</div>
+               <div class="plan__img"><img src="images-1/plan6.svg" alt="Видео"></div>
+               <p class="plan__text">Смотрите <br><span>видео о животных</span></p>
+            </div>
+
+            <!-- Шаг 7 -->
+            <div class="plan__item">
+               <div class="plan__number">07</div>
+               <div class="plan__img"><img src="images-1/plan7.svg" alt="Поделиться"></div>
+               <p class="plan__text">Делитесь <br><span>с друзьями</span></p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="consultation">
+      <div class="consultation__container container">
+         <h2 class="consultation__title title-bold">Хотите получать <span class="title-light">новые факты о животных
+               каждую неделю?</span></h2>
+
+         <div class="consultation__wrapper">
+            <div class="consultation__item-form">
+               <p class="consultation__subtitle"><span>Подпишитесь на нашу рассылку</span> и узнавайте первыми о новых
+                  видах, интересных статьях и редких фотографиях
+               </p>
+
+               <div class="form__item">
+                  <form action="#"
+                     onsubmit="event.preventDefault(); alert('Спасибо за подписку! Мы отправили письмо на вашу почту.'); this.reset();">
+                     <p>Ваше имя:</p>
+                     <input type="text" placeholder="Имя" required
+                        style="width: 230px; height: 53px; border-radius: 20px; border: 1px solid #414141; padding: 15px 25px; margin-bottom: 20px; font-family: 'Gilroy-Light';">
+
+                     <p>Ваш email:</p>
+                     <div class="form__wrapper">
+                        <input type="email" placeholder="example@mail.ru" required
+                           style="width: 230px; height: 53px; border-radius: 20px; border: 1px solid #414141; padding: 15px 25px; font-family: 'Gilroy-Light';">
+                        <button type="submit">Подписаться&nbsp<img src="images/services-link1.png"></button>
+                     </div>
+
+                     <div class="confidentiality__checkbox-wrapper">
+                        <input type="checkbox" name="confidentiality-checkbox1" checked id="consultation-checkbox1"
+                           required>
+                        <p>Я согласен получать письма и принимаю <a href="#">политику конфиденциальности</a></p>
+                     </div>
+
+                     <div class="confidentiality__checkbox-wrapper">
+                        <input type="checkbox" name="confidentiality-checkbox2" checked id="consultation-checkbox2">
+                        <p>Я хочу получать только самое интересное (без спама)</p>
+                     </div>
+                  </form>
+               </div>
+            </div>
+
+            <div class="consultation__item-img">
+               <img src="images-1/consultation.svg" alt="Сова с книгой" style="max-width: 100%;">
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="reviews">
+      <div class="reviews__container container">
+         <div class="reviews__header">
+            <h2>Что говорят наши посетители</h2>
+            <div class="reviews__block jandex-karti-reiting" style="display: none;">
+               <!-- Скрываем старый рейтинг -->
+            </div>
+         </div>
+
+         <div class="reviews-slider swiper">
+            <div class="reviews-slider__wrapper swiper-wrapper">
+
+               <!-- Отзыв 1: Елена, мама второклассника -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-woman1.jpg); background-size: cover; background-position: center; background-color: #5d95ff; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        Е
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>Елена</h3>
+                        <p>мама второклассника</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Спасибо за сайт! Ребёнок делал доклад про пингвинов. Всё нашла быстро: и факты, и фото, и где
+                     живут. Отдельное спасибо за понятные тексты — дочка сама смогла прочитать и пересказать."
+                  </div>
+               </div>
+
+               <!-- Отзыв 2: Михаил, учитель биологии -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-man1.jpg); background-size: cover; background-position: center; background-color: #229ED9; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        М
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>Михаил</h3>
+                        <p>учитель биологии</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Рекомендую этот сайт своим ученикам для подготовки к урокам. Хорошая подборка животных, точные
+                     факты, нет ошибок. Особенно нравится раздел с редкими видами — то, что нужно для олимпиад."
+                  </div>
+               </div>
+
+               <!-- Отзыв 3: Анна, путешественница -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-woman2.jpg); background-size: cover; background-position: center; background-color: #5d95ff; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        А
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>Анна</h3>
+                        <p>путешественница</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Перед поездкой в Африку решила почитать про животных, которых смогу увидеть. Нашла тут и слонов, и
+                     жирафов, и львов. Очень помогли заметки про поведение — знала, чего ожидать. Сайтом пользуюсь до
+                     сих пор."
+                  </div>
+               </div>
+
+               <!-- Отзыв 4: Дмитрий, фотограф дикой природы -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-man2.jpg); background-size: cover; background-position: center; background-color: #229ED9; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        Д
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>Дмитрий</h3>
+                        <p>фотограф дикой природы</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Коллеги поделились ссылкой. Отличная подборка информации о повадках животных — помогает
+                     планировать съёмки. Знаю, в какое время лучше застать тех или иных зверей. Спасибо авторам!"
+                  </div>
+               </div>
+
+               <!-- Отзыв 5: София, 9 лет -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-girl.jpg); background-size: cover; background-position: center; background-color: #5d95ff; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        С
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>София</h3>
+                        <p>9 лет</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Мне очень нравится читать про дельфинов! Они такие умные и красивые. Я уже сделала три доклада в
+                     школу и всем одноклассникам рассказала про этот сайт. Тут есть даже про китов!"
+                  </div>
+               </div>
+
+               <!-- Отзыв 6: Олег, папа двух мальчишек -->
+               <div class="reviews-slider__slide swiper-slide">
+                  <div class="reviews-slider__slide-header">
+                     <div class="reviews-slider__slide-foto"
+                        style="background-image: url(images/review-man3.jpg); background-size: cover; background-position: center; background-color: #229ED9; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
+                        О
+                     </div>
+                     <div class="reviews-slider__slide-name">
+                        <h3>Олег</h3>
+                        <p>папа двух мальчишек</p>
+                     </div>
+                  </div>
+                  <div class="reviews-slider__slide-reiting">
+                     <img src="images/reating.png"><img src="images/reating.png"><img src="images/reating.png"><img
+                        src="images/reating.png"><img src="images/reating.png">
+                  </div>
+                  <div class="reviews-slider__slide-text">
+                     "Сыновья (5 и 8 лет) могут зависать на сайте часами. Просят почитать про животных перед сном, а
+                     потом пересказывают факты. Отличная альтернатива мультикам — и полезно, и интересно."
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="reviews-slider__buttons">
+            <div id="reviewsPrev" class="reviews-button-prev"><img src="images/arrow1.png"></div>
+            <div id="reviewsNext" class="reviews-button-next"><img src="images/arrow2.png"></div>
+         </div>
+      </div>
+   </section>
+
+   <section class="blog">
+      <div class="blog__container container">
+         <h2 class="blog__title">Интересные статьи о животных</h2>
+
+         <div class="blog-slider swiper">
+            <div class="blog-slider__wrapper swiper-wrapper">
+
+               <!-- Статья 1: Слоны -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>10 удивительных фактов о слонах</h3>
+                     <p>Знаете ли вы, что слон — единственное млекопитающее, которое не умеет прыгать? А ещё у них
+                        отличная память и очень сложные социальные связи.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>3 минуты на прочтение</p>
+                        <p>15.02.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 2: Пингвины -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Почему пингвины не летают?</h3>
+                     <p>Эволюция распорядилась так, что пингвины обменяли небо на океан. Их крылья превратились в ласты,
+                        а плотные перья помогают нырять на глубину до 500 метров.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>4 минуты на прочтение</p>
+                        <p>10.02.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 3: Медведи -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Как медведи зимуют?</h3>
+                     <p>Бурый медведь спит зимой не потому, что ему холодно. Зимой просто нечего есть. За лето он
+                        накапливает до 180 кг жира и может не есть до 6 месяцев!</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>5 минут на прочтение</p>
+                        <p>05.02.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 4: Самые умные животные -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Топ-5 самых умных животных</h3>
+                     <p>Дельфины узнают себя в зеркале, слоны оплакивают умерших, а вороны изготавливают орудия труда.
+                        Кто ещё вошёл в пятёрку умников?</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>6 минут на прочтение</p>
+                        <p>28.01.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 5: Глубины океана -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Кто живёт на дне океана?</h3>
+                     <p>Рыба-капля, гигантский кальмар, глубоководный удильщик — на большой глубине обитают самые
+                        необычные создания планеты. Познакомьтесь с ними поближе.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>7 минут на прочтение</p>
+                        <p>20.01.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 6: Мифы о страусах -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Правда ли, что страусы прячут голову в песок?</h3>
+                     <p>Это самый известный миф о птицах. На самом деле страусы наклоняют голову к земле, чтобы поесть
+                        или спрятаться от ветра, но никогда не закапывают её в песок.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>3 минуты на прочтение</p>
+                        <p>12.01.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 7: Дельфины -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Как общаются дельфины?</h3>
+                     <p>У каждого дельфина есть своё имя, на которое он откликается! Они используют свисты, щелчки и
+                        даже танцы, чтобы передавать информацию сородичам.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>4 минуты на прочтение</p>
+                        <p>05.01.2026</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+
+               <!-- Статья 8: Львы -->
+               <div class="blog__item swiper-slide">
+                  <div>
+                     <h3>Почему львы — короли зверей?</h3>
+                     <p>Не только из-за грозного вида и гривы. Львы — единственные кошки, живущие прайдами. Они защищают
+                        друг друга и вместе воспитывают детёнышей.</p>
+                  </div>
+                  <div>
+                     <div class="blog__info">
+                        <p>4 минуты на прочтение</p>
+                        <p>28.12.2025</p>
+                     </div>
+                     <a href="#">Читать<img class="blog__info-arrow" src="images/services-link1.png"></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="reviews-slider__buttons">
+            <div id="blogPrev" class="blog-button-prev"><img src="images/arrow1.png"></div>
+            <div id="blogNext" class="blog-button-next"><img src="images/arrow2.png"></div>
+         </div>
+      </div>
+   </section>
+
+   <section class="bank-guarantees-accordion">
+      <div class="bank-guarantees-accordion__container container">
+         <h2 class="bank-guarantees-accordion__title answers__title">Часто задаваемые вопросы о животных</h2>
+
+         <div class="accordion" id="accordion">
+            <!-- Вопрос 1: Крокодил и аллигатор -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Чем отличается крокодил от аллигатора?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Самое главное отличие — в форме морды. У крокодила морда острая, V-образная, а у аллигатора —
+                     широкая, U-образная. Кроме того, у крокодила, когда пасть закрыта, виден четвёртый зуб на нижней
+                     челюсти, а у аллигатора — нет. Встречаются они тоже в разных местах: крокодилы живут в Африке,
+                     Азии, Америке и Австралии, а аллигаторы — только в США и Китае.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 2: Жирафы и сон -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Правда ли, что жирафы почти не спят?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Да, это правда! Взрослые жирафы спят всего 20–30 минут в сутки, и часто это происходит урывками по
+                     5–10 минут. В дикой природе они вообще могут не ложиться неделями. А если жираф всё-таки ложится,
+                     то подгибает ноги и кладёт голову себе на круп — но это очень редкое зрелище.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 3: Черепахи-долгожители -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Сколько лет живут черепахи?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Всё зависит от вида. Маленькие домашние черепахи живут 20–40 лет. А вот гигантские галапагосские
+                     черепахи могут прожить больше 150 лет! Самая известная долгожительница — черепаха по имени
+                     Джонатан, ей больше 190 лет, и она до сих пор живёт на острове Святой Елены.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 4: Розовые фламинго -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Почему фламинго розовые?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Фламинго рождаются серыми! Розовый цвет появляется из-за их питания. Они едят креветок, водоросли и
+                     рачков, в которых содержится особый пигмент — каротиноид. Чем больше фламинго ест такой еды, тем
+                     ярче его перья. В зоопарках их специально кормят морковкой и красным перцем, чтобы цвет сохранялся.
+                  </p>
+               </div>
+            </div>
+
+            <!-- Вопрос 5: Верблюды и вода -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Может ли верблюд не пить неделю?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Да, и даже дольше! Верблюды — рекордсмены по выживанию без воды. В прохладную погоду они могут
+                     обходиться без питья до 10 дней, а в жару — до 7. Но когда верблюд добирается до воды, он может
+                     выпить до 150 литров за раз. Вода накапливается не в горбу, как многие думают, а в крови и тканях
+                     организма.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 6: Хамелеоны -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Как хамелеоны меняют цвет?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Раньше думали, что хамелеоны маскируются под окружение. На самом деле цвет меняется из-за
+                     настроения, температуры и здоровья. В коже у них есть особые клетки — хроматофоры. Когда хамелеон
+                     злится, пугается или хочет понравиться самочке, клетки сжимаются или расширяются, и цвет меняется.
+                  </p>
+               </div>
+            </div>
+
+            <!-- Вопрос 7: Осьминог и сердца -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Правда ли, что у осьминога три сердца?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Чистая правда! Два сердца проталкивают кровь через жабры, а третье — через остальное тело. И ещё
+                     один интересный факт: когда осьминог плавает, третье сердце перестаёт биться, поэтому эти моллюски
+                     предпочитают ползать по дну, а не плавать — так меньше устают.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 8: Собачий хвост -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Почему собаки виляют хвостом?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Собаки виляют хвостом, чтобы общаться. Но направление имеет значение! Если хвост смещён вправо —
+                     собака рада или заинтересована. Если влево — она насторожена или встревожена. А ещё виляющий хвост
+                     не всегда означает дружелюбие — иногда это признак возбуждения или даже агрессии. Важно смотреть на
+                     всё тело собаки целиком.</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 9: Кошачье мурлыканье -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Как кошки мурлыкают и зачем?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Кошки мурлыкают с помощью мышц гортани, которые сокращаются 20–30 раз в секунду. Интересно, что
+                     мурлыканье — это не всегда признак удовольствия. Кошки также мурлыкают, когда напуганы, больны или
+                     даже рожают — это помогает им успокоиться и выделять эндорфины. А ещё вибрация от мурлыканья
+                     ускоряет заживление костей и ран!</p>
+               </div>
+            </div>
+
+            <!-- Вопрос 10: Страусы и голова в песке -->
+            <div class="accordion-item">
+               <div class="accordion-header">
+                  <h3>Правда ли, что страусы прячут голову в песок?</h3>
+                  <div class="accordion-icon"><img src="images/accordion-icon.png"></div>
+               </div>
+               <div class="accordion-content">
+                  <p>Это самый известный, но абсолютно ложный миф! Страусы никогда не закапывают голову в песок. Если бы
+                     они так делали, то просто задохнулись бы. На самом деле при опасности страусы либо убегают (они
+                     разгоняются до 70 км/ч), либо кладут голову на землю, чтобы стать незаметнее издалека. А со стороны
+                     может показаться, что голова в песке.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="consultation1">
+      <div class="consultation1__container container">
+         <p class="consultation1__over-title">Мир животных ждёт тебя!</p>
+
+         <h2 class="consultation1__title title-bold">Открой для себя удивительных существ со всей планеты</h2>
+
+         <div class="form__item" style="text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+               <a href="#services"
+                  onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'}); return false;"
+                  style="background-color: #229ED9; color: white; font-family: 'Gilroy-ExtraBold'; font-size: 24px; padding: 20px 50px; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,81,255,0.3);">
+                  Перейти к каталогу
+               </a>
+
+               <a href="#blog"
+                  onclick="document.querySelector('.blog').scrollIntoView({behavior: 'smooth'}); return false;"
+                  style="background-color: #5d95ff; color: white; font-family: 'Gilroy-ExtraBold'; font-size: 24px; padding: 20px 50px; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(93,149,255,0.3);">
+                  Читать статьи
+               </a>
+            </div>
+
+            <p style="font-family: 'Gilroy-Light'; font-size: 18px; margin-top: 30px; color: #414141;">
+               Более 100 видов животных, интересные факты, фотографии и многое другое — всё бесплатно!
+            </p>
+         </div>
+      </div>
+   </section>
+
+   <footer class="footer">
+      <div class="footer__top">
+         <div class="footer__top-container container">
+            <a href="index.html"><img src="images-1/logo.svg" alt="Мир животных" style="max-width: 100px;"></a>
+
+            <ul class="footer__top-links">
+               <li><a href="#" data-goto=".no-bounce">О нас</a></li>
+               <li><a href="#" data-goto=".services">Каталог</a></li>
+               <li><a href="#" data-goto=".plan">Как это работает</a></li>
+               <li><a href="#" data-goto=".reviews">Отзывы</a></li>
+               <li><a href="#" data-goto=".answers">FAQ</a></li>
+               <li><a href="#" data-goto=".blog">Статьи</a></li>
+            </ul>
+
+            <button class="btn-trigger"
+               onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'});">Искать
+               животных</button>
+         </div>
+      </div>
+
+      <div class="footer__content">
+         <div class="footer__content-container container">
+            <ul class="footer__nav">
+               <!-- Колонка 1: Категории животных -->
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Категории</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="#" data-goto=".services" data-tab="tab-1">Млекопитающие</a></li>
+                     <li><a href="#" data-goto=".services" data-tab="tab-2">Птицы</a></li>
+                     <li><a href="#" data-goto=".services" data-tab="tab-3">Рептилии</a></li>
+                     <li><a href="#" data-goto=".services" data-tab="tab-4">Морские обитатели</a></li>
+                  </ul>
+               </li>
+
+               <!-- Колонка 2: Информация -->
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Информация</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="#" data-goto=".no-bounce">О проекте</a></li>
+                     <li><a href="#" data-goto=".reviews">Отзывы</a></li>
+                     <li><a href="#" data-goto=".blog">Статьи</a></li>
+                     <li><a href="#" data-goto=".answers">Вопрос-ответ</a></li>
+                  </ul>
+               </li>
+
+               <!-- Колонка 3: Для посетителей -->
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Для посетителей</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="#"
+                           onclick="alert('Спасибо за интерес! Скоро здесь появятся новости.'); return false;">Новости</a>
+                     </li>
+                     <li><a href="#" onclick="alert('Напишите нам: animals@example.com'); return false;">Контакты</a>
+                     </li>
+                     <li><a href="#" onclick="alert('Мы всегда рады сотрудничеству!'); return false;">Сотрудничество</a>
+                     </li>
+                  </ul>
+               </li>
+
+               <!-- Колонка 4: Правовая информация -->
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Документы</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="#" onclick="alert('Политика конфиденциальности (пример)'); return false;">Политика
+                           конфиденциальности</a></li>
+                     <li><a href="#"
+                           onclick="alert('Пользовательское соглашение (пример)'); return false;">Пользовательское
+                           соглашение</a></li>
+                     <li><a href="#"
+                           onclick="alert('Все материалы используются в образовательных целях'); return false;">Об
+                           авторских правах</a></li>
+                  </ul>
+               </li>
+            </ul>
+
+            <div class="footer__wrapper">
+               <ul class="footer__info1">
+                  <li class="footer__contacts-item">
+                     <a href="#" onclick="alert('Политика конфиденциальности'); return false;">Политика
+                        конфиденциальности</a>
+                  </li>
+                  <li class="footer__contacts-item">
+                     <a href="#" onclick="alert('Пользовательское соглашение'); return false;">Пользовательское
+                        соглашение</a>
+                  </li>
+                  <li class="footer__contacts-item">
+                     <a href="#" onclick="alert('Согласие на обработку персональных данных'); return false;">Согласие на
+                        обработку данных</a>
+                  </li>
+               </ul>
+
+               <ul class="footer__contacts">
+                  <li class="footer__contacts-item">
+                     <p>Email:</p>
+                     <a href="#" onclick="alert('animals@example.com'); return false;">animals@example.com</a>
+                  </li>
+                  <li class="footer__contacts-item">
+                     <p>Мы в соцсетях:</p>
+                     <a href="#"
+                        onclick="alert('Мы ещё не завели соцсети, но скоро будем!'); return false;">ВКонтакте</a>
+                  </li>
+               </ul>
+            </div>
+
+            <div class="footer__info">
+               <p>Все материалы, размещенные на сайте, имеют образовательный и информационный характер. Фотографии взяты
+                  из открытых источников и используются в некоммерческих целях.</p>
+               <p>Сайт создан для всех, кто интересуется животным миром. Мы стараемся давать только проверенную
+                  информацию из зоологических источников.</p>
+            </div>
+
+            <p class="footer__info2">© Мир животных, 2026. Все права защищены.</p>
+         </div>
+      </div>
+   </footer>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+   <script src="burger.js"></script>
+   <script src="script.js"></script>
+   <script src="calculator-now.js"></script>
+
+</body>
+
+</html>
