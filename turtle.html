@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="ОПИСАНИЕ - замените на нужное">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="style.css">
+   <title>НАЗВАНИЕ ЖИВОТНОГО | Мир животных</title>
+</head>
+
+<body>
+   <!--Всплывающее окно "Бургер"-->
+   <div class="burger__overlay">
+      <div class="burger__content">
+         <img src="images/icon-burger.png" class="burger__x">
+         <div class="header__burger-nav"></div>
+
+      </div>
+   </div>
+   <!-- ШАПКА (копия с главной) -->
+   <section class="first-screen first-screen-item">
+      <div class="first-screen__container container">
+         <div class="header">
+            <div class="header__top">
+               <a href="index.html" class="header__logo">
+                  <img src="images/logo.svg" alt="Мир животных">
+               </a>
+               <div class="header__buttons">
+                  <a href="index.html#services">Каталог животных<img src="images/header-calc.svg"></a>
+                  <a class="btn-trigger" href="#" onclick="window.location.href='index.html#consultation';">Найти
+                     животное</a>
+               </div>
+
+               <div class="header__menu-icon burger-btn-trigger"><img src="images/icon-burger1.png"></div>
+            </div>
+            <div class="header__bottom">
+               <div class="header__bottom-menu">
+                  <ul class="menu">
+                     <li>Категории <img src="images/menu.png">
+                        <ul class="sub-menu">
+                           <li><a href="index.html#tab-1">Млекопитающие</a></li>
+                           <li><a href="index.html#tab-2">Птицы</a></li>
+                           <li><a href="index.html#tab-3">Рептилии</a></li>
+                           <li><a href="index.html#tab-4">Морские обитатели</a></li>
+                        </ul>
+                     </li>
+                     <li>О проекте <img src="images/menu.png">
+                        <ul class="sub-menu">
+                           <li><a href="index.html#no-bounce">О нас</a></li>
+                           <li><a href="index.html#reviews">Отзывы</a></li>
+                           <li><a href="index.html#blog">Статьи</a></li>
+                           <li><a href="index.html#answers">FAQ</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </div>
+               <nav class="header__bottom-nav">
+                  <ul>
+                     <li><a href="index.html#no-bounce">О нас</a></li>
+                     <li><a href="index.html#services">Каталог</a></li>
+                     <li><a href="index.html#plan">Как это работает</a></li>
+                     <li><a href="index.html#reviews">Отзывы</a></li>
+                     <li><a href="index.html#answers">FAQ</a></li>
+                     <li><a href="index.html#blog">Статьи</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+         <!-- Контент первого экрана -->
+         <div class="first-screen__content">
+            <div class="breadcrumbs">
+               <a href="index.html">Главная</a> >
+               <a href="index.html#services">Каталог</a> >
+               <a href="index.html#tab-3">Рептилии</a> >
+               <span>Черепаха</span>
+            </div>
+            <h1 class="animal-title title-bold">Черепаха — живёт до 190 лет</h1>
+         </div>
+
+
+      </div>
+      </div>
+   </section>
+
+   <!-- ОСНОВНОЙ КОНТЕНТ - СТРАНИЦА ЖИВОТНОГО -->
+   <section class="animal-page">
+      <div class="container">
+
+
+         <div class="animal-content">
+            <div class="animal-image">
+               <img src="images/lion.jpg" alt="НАЗВАНИЕ ЖИВОТНОГО">
+            </div>
+
+            <div class="animal-text">
+               <!-- СЮДА ВСТАВЛЯТЬ ТЕКСТ ИЗ НИЖЕПРИВЕДЁННЫХ ЗАГОТОВОК -->
+               <h2>Общая информация</h2>
+               <p>Черепахи — одни из древнейших животных на планете. Их уникальная особенность — панцирь, сросшийся со
+                  скелетом.</p>
+
+               <h2>Среда обитания</h2>
+               <p>Живут в морях, океанах, пресных водоёмах и на суше. Встречаются на всех континентах, кроме Антарктиды.
+               </p>
+
+               <h2>Образ жизни и питание</h2>
+               <p>Большинство видов медлительны. Среди них есть хищники, травоядные и всеядные. Морские черепахи
+                  преодолевают тысячи километров в миграциях.</p>
+
+               <h2>Интересные факты</h2>
+               <ul>
+                  <li>Гигантские черепахи живут более 150 лет</li>
+                  <li>Черепахи не могут вылезти из панциря — он часть их скелета</li>
+                  <li>Температура инкубации яиц определяет пол будущих черепашат</li>
+                  <li>Морские черепахи плавают со скоростью до 35 км/ч</li>
+               </ul>
+            </div>
+         </div>
+
+         <!-- Кнопка возврата -->
+         <div class="back-button">
+            <a href="index.html#services" class="btn">← Вернуться в каталог</a>
+         </div>
+      </div>
+   </section>
+
+   <!-- ПОДВАЛ -->
+   <footer class="footer">
+      <div class="footer__top">
+         <div class="footer__top-container container">
+            <a href="index.html"><img src="images/logo.svg" alt="Мир животных" style="max-width: 200px;"></a>
+            <ul class="footer__top-links">
+               <li><a href="index.html#no-bounce">О нас</a></li>
+               <li><a href="index.html#services">Каталог</a></li>
+               <li><a href="index.html#plan">Как это работает</a></li>
+               <li><a href="index.html#reviews">Отзывы</a></li>
+               <li><a href="index.html#answers">FAQ</a></li>
+               <li><a href="index.html#blog">Статьи</a></li>
+            </ul>
+            <button onclick="window.location.href='index.html#services';">Искать животных</button>
+         </div>
+      </div>
+      <div class="footer__content">
+         <div class="footer__content-container container">
+            <ul class="footer__nav">
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Категории</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="index.html#tab-1">Млекопитающие</a></li>
+                     <li><a href="index.html#tab-2">Птицы</a></li>
+                     <li><a href="index.html#tab-3">Рептилии</a></li>
+                     <li><a href="index.html#tab-4">Морские обитатели</a></li>
+                  </ul>
+               </li>
+               <li class="footer__nav-item">
+                  <h3 class="footer__nav-title">Информация</h3>
+                  <ul class="footer__nav-list">
+                     <li><a href="index.html#no-bounce">О проекте</a></li>
+                     <li><a href="index.html#reviews">Отзывы</a></li>
+                     <li><a href="index.html#blog">Статьи</a></li>
+                     <li><a href="index.html#answers">Вопрос-ответ</a></li>
+                  </ul>
+               </li>
+            </ul>
+            <div class="footer__info">
+               <p>© Мир животных, 2026. Все права защищены.</p>
+            </div>
+         </div>
+      </div>
+   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+   <script src="burger.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>
