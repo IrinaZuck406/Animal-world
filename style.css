@@ -204,7 +204,7 @@ textarea:focus {
 
 .burger__content {
    /*background-color: #fff;*/
-   background-image: url(images-1/burger-bg.jpg);
+   background-image: url(images/burger-bg.jpg);
    background-position: center bottom;
    background-size: cover;
    width: 90%;
@@ -391,7 +391,7 @@ textarea:focus {
 }
 
 .consultation-modal__content {
-   background-image: url(images-1/modal-bg.png);
+   background-image: url(images/modal-bg.png);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -820,7 +820,7 @@ textarea:focus {
    height: 100vh;
    /* width: 100vw;*/
    position: relative;
-   background: url(images-1/background-header.jpg);
+   background: url(images/background-header.jpg);
    background-position: center;
    background-size: cover;
    overflow: hidden;
@@ -2474,7 +2474,7 @@ textarea:focus {
 }
 
 .openly__item-quantity::before {
-   content: url("images-1/openly-text.png");
+   content: url("images/openly-text.png");
    position: absolute;
    top: -20px;
    right: -20px;
@@ -3028,7 +3028,7 @@ textarea:focus {
    display: flex;
    justify-content: center;
    align-items: center;
-   /* background-image: url('images-1/plan.svg');
+   /* background-image: url('images/plan.svg');
    background-position: center;
    background-size: cover;*/
    margin-bottom: 20px;
@@ -3329,7 +3329,7 @@ textarea:focus {
 }
 
 /*.plan__img {
-   background-image: url('images-1/plan.svg');
+   background-image: url('images/plan.svg');
    background-size: cover;
 }*/
 
@@ -4606,6 +4606,131 @@ select {
 }
 
 /*------------------------------------------*/
+/* Страница животного */
+.animal-page {
+   padding: 50px 0;
+   background-color: #f9f9f9;
+}
+
+.breadcrumbs {
+   margin-bottom: 30px;
+   font-family: 'Gilroy-Light';
+   font-size: 14px;
+   color: #666;
+}
+
+.breadcrumbs a {
+   color: #229ED9;
+   text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+   text-decoration: underline;
+}
+
+.animal-title {
+   margin-bottom: 40px;
+   text-align: center;
+}
+
+.animal-content {
+   display: flex;
+   gap: 40px;
+   align-items: flex-start;
+   background: white;
+   border-radius: 20px;
+   padding: 30px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.animal-image {
+   flex: 1;
+   max-width: 45%;
+}
+
+.animal-image img {
+   width: 100%;
+   height: auto;
+   border-radius: 20px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.animal-text {
+   flex: 1;
+}
+
+.animal-text h2 {
+   font-family: 'Gilroy-ExtraBold';
+   font-size: 24px;
+   color: #414141;
+   margin: 30px 0 15px 0;
+}
+
+.animal-text h2:first-of-type {
+   margin-top: 0;
+}
+
+.animal-text p {
+   font-family: 'Gilroy-Light';
+   font-size: 16px;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 15px;
+}
+
+.animal-text ul {
+   list-style: disc;
+   padding-left: 20px;
+   margin-bottom: 20px;
+}
+
+.animal-text li {
+   font-family: 'Gilroy-Light';
+   font-size: 16px;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 8px;
+}
+
+.back-button {
+   text-align: center;
+   margin-top: 40px;
+}
+
+.back-button .btn {
+   display: inline-block;
+   padding: 15px 40px;
+   background-color: #229ED9;
+   color: white;
+   font-family: 'Gilroy-ExtraBold';
+   font-size: 18px;
+   border-radius: 50px;
+   text-decoration: none;
+   transition: 0.3s;
+}
+
+.back-button .btn:hover {
+   background-color: #0051FF;
+   transform: translateY(-2px);
+   box-shadow: 0 10px 20px rgba(0, 81, 255, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+   .animal-content {
+      flex-direction: column;
+   }
+
+   .animal-image {
+      max-width: 100%;
+   }
+
+   .animal-page {
+      padding: 30px 0;
+   }
+}
+
+/*------------------------------------------*/
 .terms-of-redemption {
    background-color: #f7fafc;
 }
@@ -4636,7 +4761,7 @@ select {
 }
 
 .terms-of-redemption__item-img {
-   background-image: url(images-1/terms-of-redemption.png);
+   background-image: url(images/terms-of-redemption.png);
    background-position: center;
    background-size: 100%;
    background-repeat: no-repeat;
@@ -5281,7 +5406,7 @@ select {
 }
 
 .calculation-ransom__item-button3 {
-   background-image: url(images-1/calculation-ransom-arrow.png);
+   background-image: url(images/calculation-ransom-arrow.png);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
