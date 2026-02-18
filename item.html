@@ -11,22 +11,28 @@
 </head>
 
 <body>
+   <!--Всплывающее окно "Бургер"-->
+   <div class="burger__overlay">
+      <div class="burger__content">
+         <img src="images/icon-burger.png" class="burger__x">
+         <div class="header__burger-nav"></div>
 
+      </div>
+   </div>
    <!-- ШАПКА (копия с главной) -->
-   <section class="first-screen"
-      style="height: auto; min-height: auto; background: linear-gradient(135deg, #f0f8ff 0%, #e6f0fa 100%);">
+   <section class="first-screen first-screen-item">
       <div class="first-screen__container container">
          <div class="header">
             <div class="header__top">
                <a href="index.html" class="header__logo">
-                  <img src="images/header-logo.png" alt="Мир животных">
+                  <img src="images/logo.svg" alt="Мир животных">
                </a>
                <div class="header__buttons">
-                  <a href="index.html#services">Каталог животных<img src="images/header-calc.png"></a>
+                  <a href="index.html#services">Каталог животных<img src="images/header-calc.svg"></a>
                   <a class="btn-trigger" href="#" onclick="window.location.href='index.html#consultation';">Найти
                      животное</a>
                </div>
-               <div class="header__links" style="display: none;"></div>
+
                <div class="header__menu-icon burger-btn-trigger"><img src="images/icon-burger1.png"></div>
             </div>
             <div class="header__bottom">
@@ -69,9 +75,9 @@
                <a href="index.html">Главная</a> >
                <a href="index.html#services">Каталог</a> >
                <a href="#" id="breadcrumb-category">КАТЕГОРИЯ</a> >
-               <span>НАЗВАНИЕ ЖИВОТНОГО</span>
+               <span>Лев</span>
             </div>
-            <h1 class="animal-title title-bold">НАЗВАНИЕ ЖИВОТНОГО — краткое описание</h1>
+            <h1 class="animal-title title-bold">Лев — краткое описание</h1>
 
 
 
@@ -86,38 +92,34 @@
    <!-- ОСНОВНОЙ КОНТЕНТ - СТРАНИЦА ЖИВОТНОГО -->
    <section class="animal-page">
       <div class="container">
-         <!-- Хлебные крошки -->
-         <div class="breadcrumbs">
-            <a href="index.html">Главная</a> >
-            <a href="index.html#services">Каталог</a> >
-            <a href="#" id="breadcrumb-category">КАТЕГОРИЯ</a> >
-            <span>НАЗВАНИЕ ЖИВОТНОГО</span>
-         </div>
 
-         <!-- Заголовок и фото -->
-         <h1 class="animal-title title-bold">НАЗВАНИЕ ЖИВОТНОГО — краткое описание</h1>
 
          <div class="animal-content">
             <div class="animal-image">
-               <img src="images/animal-placeholder.jpg" alt="НАЗВАНИЕ ЖИВОТНОГО">
+               <img src="images/lion.jpg" alt="НАЗВАНИЕ ЖИВОТНОГО">
             </div>
 
             <div class="animal-text">
                <!-- СЮДА ВСТАВЛЯТЬ ТЕКСТ ИЗ НИЖЕПРИВЕДЁННЫХ ЗАГОТОВОК -->
                <h2>Общая информация</h2>
-               <p>Текст...</p>
+               <p>Лев — второй по величине представитель семейства кошачьих после тигра. Вес самцов может достигать 250
+                  кг, а длина тела — 2,5 метра без учёта хвоста. Львы — единственные кошки, живущие прайдами (семейными
+                  группами).</p>
 
                <h2>Среда обитания</h2>
-               <p>Текст...</p>
+               <p>Львы обитают в саваннах и травянистых равнинах Африки. Небольшая популяция азиатских львов сохранилась
+                  в Гирском лесу в Индии.</p>
 
                <h2>Образ жизни и питание</h2>
-               <p>Текст...</p>
+               <p>Основная охота ложится на львиц. Они охотятся коллективно на крупных копытных: зебр, антилоп,
+                  буйволов. Львы — вершина пищевой цепочки, у них нет естественных врагов.</p>
 
                <h2>Интересные факты</h2>
                <ul>
-                  <li>Факт 1</li>
-                  <li>Факт 2</li>
-                  <li>Факт 3</li>
+                  <li>Рёв льва слышен за 8 километров</li>
+                  <li>Грива есть только у самцов и служит для защиты в драках</li>
+                  <li>Львы спят около 20 часов в сутки</li>
+                  <li>В прайде обычно 1-2 взрослых самца, несколько самок и детёныши</li>
                </ul>
             </div>
          </div>
@@ -133,7 +135,7 @@
    <footer class="footer">
       <div class="footer__top">
          <div class="footer__top-container container">
-            <a href="index.html"><img src="images/footer-logo.png" alt="Мир животных" style="max-width: 200px;"></a>
+            <a href="index.html"><img src="images/logo.svg" alt="Мир животных" style="max-width: 200px;"></a>
             <ul class="footer__top-links">
                <li><a href="index.html#no-bounce">О нас</a></li>
                <li><a href="index.html#services">Каталог</a></li>

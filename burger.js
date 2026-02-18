@@ -31,47 +31,6 @@ window.addEventListener('resize', () => {
 });
 
 
-/*------------Всплывающее окно "Консультация"----------*/
-const modal = document.querySelector('.consultation-modal__overlay');
-const triggerBtn = document.querySelectorAll('.btn-trigger');
-const closeBtn = document.querySelector('.consultation-modal__x');
-const confirmBtn = document.querySelector('.consultation-modal__content button');
-
-
-// Функция открытия модального окна
-function consultationOpenModal() {
-   modal.classList.add('active');
-   document.body.classList.add('_lock');
-}
-
-// Функция закрытия модального окна
-function consultationCloseModal() {
-   modal.classList.remove('active');
-   document.body.classList.remove('_lock');
-}
-
-// Обработчики событий
-
-triggerBtn.forEach(elem => {
-   elem.addEventListener('click', consultationOpenModal);
-})
-closeBtn.addEventListener('click', consultationCloseModal);
-confirmBtn.addEventListener('click', consultationCloseModal);
-
-
-// Закрытие окна при клике за его пределами
-modal.addEventListener('click', (e) => {
-   if (e.target === modal) {
-      consultationCloseModal();
-   }
-});
-
-// Закрытие окна при нажатии клавиши Escape
-document.addEventListener('keydown', (e) => {
-   if (e.key === 'Escape' && modal.classList.contains('active')) {
-      consultationCloseModal();
-   }
-});
 
 /*------------Всплывающее окно "Бургер"----------*/
 const burgerModal = document.querySelector('.burger__overlay');
@@ -167,7 +126,7 @@ if (inputFormItem.length > 0) {
    });
 }*/
 // Применяем маску только к полям с телефоном
-const inputFormItem = document.querySelectorAll(".form__item input[type='tel']");
+/*const inputFormItem = document.querySelectorAll(".form__item input[type='tel']");
 if (inputFormItem.length > 0) {
    inputFormItem.forEach((item) => {
       item.addEventListener("input", maskTel);
@@ -189,7 +148,7 @@ const consultationModalImputTel = document.querySelector('.consultation-modal__c
 
 consultationModalImputTel.addEventListener("input", maskTel);
 consultationModalImputTel.addEventListener("focus", maskTel);
-consultationModalImputTel.addEventListener("blur", maskTel);
+consultationModalImputTel.addEventListener("blur", maskTel);*/
 /*--*/
 /*function maskTel(event) {
    var blank = "+_ (___) ___-__-__";
